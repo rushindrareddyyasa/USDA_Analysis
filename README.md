@@ -106,5 +106,5 @@ Final Power BI dashboard with:
 
 Yasa Rushindra Reddy 
 📧 y.rushindrareddy@gmail.com  
-🔗 LinkedIn  
-💻 GitHub
+🔗 LinkedIn:https://www.linkedin.com/in/rushindrareddy-yasa-1b554231a
+💻 GitHub:https://github.com/rushindrareddyyasa
