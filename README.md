@@ -4,142 +4,107 @@
 
 This project presents a three-page interactive Power BI dashboard analyzing U.S. crop yield trends and climate relationships between 2017 and 2022.
 
-The analysis is aligned with the CropNet framework, which integrates climate-aware agricultural data for county-level yield evaluation. The dashboard explores crop productivity, variability, environmental sensitivity, and regional performance patterns.
+The analysis is aligned with the **CropNet benchmark framework**, a large-scale multimodal dataset and deep learning package designed for climate-aware, county-level crop yield prediction.
+
+🔗 Official CropNet Benchmark (Hugging Face):  
+https://huggingface.co/datasets/CropNet/CropNet
+
+This repository contains data preprocessing notebooks, cleaned datasets, and the final Power BI dashboard file.
 
 ---
 
-## 🧠 About CropNet
-
-CropNet is a large-scale multimodal benchmark designed for climate-aware, county-level crop yield prediction. It combines agricultural yield data with weather variables to support research in forecasting and climate impact analysis.
-
-This dashboard utilizes the structured yield and WRF-HRRR weather components to build a business intelligence solution focused on performance analytics.
 
 ---
 
-# 📊 Dashboard Pages
+# 📊 Data Sources
+
+### 🔹 CropNet Benchmark
+Multimodal climate-aware agricultural dataset integrating satellite imagery and weather data.
+
+### 🔹 USDA Crop Yield Data
+County-level yield data for:
+- Corn
+- Wheat
+- Soybeans
+- Cotton
+
+### 🔹 WRF-HRRR Weather Data
+Monthly aggregated metrics:
+- Average Temperature (°C)
+- Total Rainfall (mm)
+- Average Humidity (%)
 
 ---
 
-## 1️⃣ Crop Yield & Climate Overview (2017–2022)
+# 🛠 Data Processing Workflow
 
-This page provides a high-level executive summary of crop and climate performance.
+The following notebooks were used for preprocessing:
 
-### Key Components:
-- KPI Cards:
-  - Average Yield (kg/ha)
-  - Total Rainfall (mm)
-  - Average Temperature (°C)
-  - Average Humidity (%)
-- Monthly Temperature Trend (Seasonality)
-- Climate Sensitivity Scatter Plots:
-  - Temperature vs Yield
-  - Humidity vs Yield
-  - Rainfall vs Yield
-- Interactive Year, Crop, and State filters (Synced across pages)
+### 📓 `crop_yield_DA.ipynb`
+- Cleaned raw USDA yield data
+- Standardized units (converted to kg/ha)
+- Created FIPS mapping
+- Prepared county-level yearly dataset
 
-### Purpose:
-To understand overall productivity trends and visually assess climate–yield relationships.
+### 📓 `Weather_data.ipynb`
+- Aggregated grid-level weather data
+- Converted temperature from Kelvin to Celsius
+- Aggregated daily → monthly → yearly metrics
+- Generated county-level weather dataset
 
 ---
+
+# 📁 Processed Files
+
+### ✅ `USDA_Crop_Yield.csv`
+Cleaned and standardized county-level yearly crop yield dataset.
+
+### ✅ `Weather_data_monthly.csv`
+Monthly aggregated county-level weather metrics.
+
+### ✅ `cropnet.pbix`
+Final Power BI dashboard with:
+- Star schema modeling
+- Synced slicers
+- Climate–yield scatter analysis
+- Yield variability metrics
+- State-level performance analysis
+
+---
+
+# 📈 Dashboard Pages
+
+## 1️⃣ Crop Yield & Climate Overview
+- KPI cards (Yield, Rainfall, Temperature, Humidity)
+- Monthly temperature seasonality
+- Climate sensitivity scatter plots
 
 ## 2️⃣ Crop Yield Dynamics
-
-This page focuses on growth trends, variability, and comparative performance.
-
-### Key Visuals:
-- Yield Standard Deviation by Crop (Variability Analysis)
-- Yield per Rainfall (Relative Productivity Insight)
-- Year-over-Year (YoY) Growth % by Crop
-- Yield Trend by Year and Crop
-- Average Yield by Crop (Comparison)
-
-### Analytical Focus:
-- Identifies most stable vs volatile crops
-- Evaluates inter-annual performance fluctuations
-- Compares long-term yield consistency
-
----
-
-## 3️⃣ State-Level Yield Performance & Trends
-
-This page explores geographic productivity differences.
-
-### Key Visuals:
-- Top Performing States by Average Yield
-- Geographic Yield Map (Bubble Map)
-- State × Crop Yield Table
-- Crop Coverage Across the US (County Distribution)
-
-### Insights:
-- Highlights regional productivity leaders
-- Shows crop concentration patterns
-- Identifies geographic performance disparities
-
----
-
-# 🏗 Data Modeling Architecture
-
-A star schema was implemented:
-
-### Fact Tables
-- Crop Yield (County-Level, Yearly)
-- Weather Data (Monthly Aggregated)
-
-### Dimension Tables
-- Calendar (Year & Month Filtering)
-- State (FIPS-based relationships)
-
-### Modeling Features
-- One-to-many relationships
-- Cross-page synchronized slicers
-- DAX time-intelligence measures
-- Dynamic ranking and variability metrics
-
----
-
-# 📈 Key DAX Measures
-
-- Average Yield (kg/ha)
-- Total Rainfall (mm)
-- YoY Growth %
 - Yield Standard Deviation
 - Yield per Rainfall
-- State Ranking
+- Year-over-Year Growth
+- Trend analysis by crop
+
+## 3️⃣ State-Level Yield Performance & Trends
+- Top performing states
+- Yield map visualization
+- State × Crop comparison table
+- Crop coverage across counties
 
 ---
 
-# 🔍 Key Insights
+# 🚀 Key Highlights
 
-- Corn shows the highest productivity but also the highest variability.
-- Rainfall demonstrates stronger visible association with yield compared to temperature.
-- Cotton production is geographically concentrated in fewer counties.
-- Yield patterns remain relatively stable from 2017–2022 with moderate fluctuations.
-- Regional differences significantly influence crop performance.
-
----
-
-# 🛠 Tools & Technologies
-
-- Power BI
-- DAX (Time Intelligence, Variability, Ranking)
-- Dimensional Data Modeling
-- Climate & Agricultural Data Integration
+- Applied CropNet-aligned climate-aware agricultural data
+- Built star schema model for scalable filtering
+- Implemented DAX time intelligence measures
+- Designed interactive multi-page BI dashboard
+- Transformed raw climate and yield data into analytical insights
 
 ---
 
-# 🚀 Project Highlights
 
-- Built an end-to-end BI solution from climate-aware agricultural data.
-- Designed synchronized filtering architecture across multiple pages.
-- Implemented star schema modeling for scalable analytics.
-- Developed volatility and growth metrics for performance evaluation.
-- Created analytical scatter plots to evaluate environmental sensitivity.
-
----
-
-## 👤 Author
-
-Rushindra Reddy Yasa  
+Yasa Rushindra Reddy 
 📧 y.rushindrareddy@gmail.com  
 🔗 LinkedIn  
 💻 GitHub
